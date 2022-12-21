@@ -6,6 +6,9 @@ const fs = require("fs");
 const Koa = require("koa");
 const app = new Koa();
 
+const cors = require('@koa/cors');
+app.use(cors());
+
 app.use(async (ctx) => {
   const carparksInfo = await getCarparks();
 
