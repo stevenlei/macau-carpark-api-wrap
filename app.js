@@ -6,7 +6,7 @@ const fs = require("fs");
 const Koa = require("koa");
 const app = new Koa();
 
-const cors = require('@koa/cors');
+const cors = require("@koa/cors");
 app.use(cors());
 
 app.use(async (ctx) => {
@@ -92,11 +92,15 @@ app.use(async (ctx) => {
       });
     }
 
+    console.log(`Request: ${ctx.request.url}`);
+
     ctx.body = carparks;
   }
 });
 
-app.listen(3000);
+app.listen(3000, () => {
+  console.log(`Server is running on http://localhost:3000`);
+});
 
 async function getCarparks() {
   let xml;
